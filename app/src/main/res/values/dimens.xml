@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="imageWidth">50sp</dimen>
+    <dimen name="imageHeight">60sp</dimen>
+    <dimen name="textSize">22sp</dimen>
+    <dimen name="leftMargin">10sp</dimen>
+</resources>
