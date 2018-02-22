@@ -8,13 +8,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class User implements Serializable, Comparable{
-    private String name;
-    private ArrayList<Card> cards = new ArrayList<Card>();
+    private String name = "You";//default to You
+    private ArrayList<Card> cards;
     private String uniqueID; //to implement
 
+    //defaultUser
+    public User(){
+        this.cards = new ArrayList<Card>();
+    }
     //new user
     public User(String name){
         this.name = name;
+        this.cards = new ArrayList<Card>();
     }
     //for transfering user accounts?
     public User(String name, ArrayList<Card> cards){

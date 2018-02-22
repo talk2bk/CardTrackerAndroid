@@ -40,7 +40,6 @@ public class MainScreen extends AppCompatActivity {
     private final int LOWERCARDTEXTSIZE = 30;
     private final int LEFTMARGIN = 10;
     private final int MAXROWSIZE = 300;
-    public static int ROWID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,6 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ROWID = 0;
         /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.addCard);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,10 +66,10 @@ public class MainScreen extends AppCompatActivity {
         //display all cards? maybe display individual users
             //make each thing clickable to display a card info page OR display a list of cards that user owns
         Card test = new Card("28708c8c-4336-4d04-b43a-59a31471a9f6",4,"CuTs","CuTs",true,"Paper","02/06/18");
-        Card secondTest = new Card("f582e3c3-c329-40bb-9ffb-c4812a7aedd5", 4, "CuTs", "CuTs", true, "Paper", "2/07/18");
+        //Card secondTest = new Card("f582e3c3-c329-40bb-9ffb-c4812a7aedd5", 4, "CuTs", "CuTs", true, "Paper", "2/07/18");
         ConstraintLayout mainScreenLayout = (ConstraintLayout) findViewById(R.id.mainscreen);
         mainScreenLayout.addView(displayCard(test));
-        mainScreenLayout.addView(displayCard(secondTest));
+        //mainScreenLayout.addView(displayCard(secondTest));
 
     }
 
@@ -97,20 +95,21 @@ public class MainScreen extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //to do (adding cards manually)
     public void addCard(View view){
         startActivity(new Intent(this,addCardActivity.class));
 
     }
 
+    private void displayCardSet(){
+        //pass in a set of cards?
+        //do displayCard on each of them
+    }
+
 
     private RelativeLayout displayCard(Card cardToDisplay){//maybe put card info in params?
         RelativeLayout card = new RelativeLayout(this);
-        /**
-        card.setId(ROWID++);
-        RelativeLayout.LayoutParams cardRowParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, MAXROWSIZE);
-        if(card.getId() > 0) cardRowParams.addRule(RelativeLayout.BELOW, (int)card.getId()-1);
-        **/
-        cuts.forohfor.scryfall.api.Card cardInfo= cardToDisplay.getCard();
+        cuts.forohfor.scryfall.api.Card cardInfo= cardToDisplay.getCardByUUID();
         int cardImageView = 1; int cardNameView = 2; int ownerNameView = 3; int clientNameView = 4; int dateView = 5; int numCopiesView = 6; int foilView = 7;
         //Imageview
         ImageView cardImage = new ImageView(this);
@@ -120,7 +119,7 @@ public class MainScreen extends AppCompatActivity {
         cardImage.setAdjustViewBounds(true);
         cardImage.setScaleType(ImageView.ScaleType.FIT_START);
         cardImage.setId(cardImageView);
-        cardImage.setImageBitmap(getCardImage(cardInfo.getImageURI("art_crop")));
+        cardImage.setImageBitmap(getCardImage(cardInfo.getImageURI("small")));
         card.addView(cardImage);
         //endImageview
 

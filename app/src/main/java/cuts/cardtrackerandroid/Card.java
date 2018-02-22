@@ -86,8 +86,8 @@ public class Card implements Comparable, Serializable {
     @Override
     public int compareTo(Object t) {
         Card temp = (Card) t;
-        cuts.forohfor.scryfall.api.Card thisCard = this.getCard();
-        cuts.forohfor.scryfall.api.Card thatCard = temp.getCard();
+        cuts.forohfor.scryfall.api.Card thisCard = this.getCardByUUID();
+        cuts.forohfor.scryfall.api.Card thatCard = temp.getCardByUUID();
         if(thisCard.getName().equalsIgnoreCase(thatCard.getName())){
             return originalOwner.compareTo(temp.originalOwner);
         }
@@ -97,8 +97,8 @@ public class Card implements Comparable, Serializable {
     @Override
     public boolean equals(Object t){
         Card temp = (Card) t;
-        cuts.forohfor.scryfall.api.Card thisCard = this.getCard();
-        cuts.forohfor.scryfall.api.Card thatCard = temp.getCard();
+        cuts.forohfor.scryfall.api.Card thisCard = this.getCardByUUID();
+        cuts.forohfor.scryfall.api.Card thatCard = temp.getCardByUUID();
         if(thisCard.getName().equalsIgnoreCase(thatCard.getName())){
             if(originalOwner.equals(temp.originalOwner)){
                 return true;
@@ -108,7 +108,11 @@ public class Card implements Comparable, Serializable {
     }
 
 
-    public cuts.forohfor.scryfall.api.Card getCard(){
+    public cuts.forohfor.scryfall.api.Card getCardByQuery(){
+        return null; //to implement
+    }
+
+    public cuts.forohfor.scryfall.api.Card getCardByUUID(){
         CardTask getCard = new CardTask();
         getCard.execute(this);
         try {
@@ -136,6 +140,7 @@ public class Card implements Comparable, Serializable {
 
         }
     }
+
 
 
 
