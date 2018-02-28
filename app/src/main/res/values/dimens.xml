@@ -4,4 +4,6 @@
     <dimen name="imageHeight">60sp</dimen>
     <dimen name="textSize">22sp</dimen>
     <dimen name="leftMargin">10sp</dimen>
+    <dimen name="addText_TextSize">30sp</dimen>
+    <dimen name="addText_boxHeight">40sp</dimen>
 </resources>

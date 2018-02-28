@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">CardTrackerAndroid</string>
     <string name="action_settings">Settings</string>
+    <string-array name="foil_choice">
+        <item>NonFoil</item>
+        <item>Foil</item>
+    </string-array>
+    <string-array name="platform_choice">
+        <item>Paper</item>
+        <item>Modo</item>
+    </string-array>
 </resources>

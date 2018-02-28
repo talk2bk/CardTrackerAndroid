@@ -1,15 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="cuts.cardtrackerandroid.addCardActivity">
 
-<TextView
-    android:text="addCardScreen"
-    android:textSize="25sp"
+    <TextView
+    android:text="Card Name: "
+    android:textSize="@dimen/addText_TextSize"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/cardNameToAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
+    <TextView
+        android:text="Number of Copies: "
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/numCopiesToAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
+    <TextView
+        android:text="Original Owner: "
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/originalOwnerToAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
+    <TextView
+        android:text="Current Owner: "
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/currentOwnerToAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
+    <TextView
+        android:text="Foil: "
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/foilChoiceToAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+    <TextView
+        android:text="Platform: "
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/platformChoiceToAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
+    <TextView
+        android:text="Date:"
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/dateToAdd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
+    <Button
+        android:id="@+id/addCardButton"
+        android:onClick ="addCardToDatabase"
+        android:text="Add Card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,24 +59,23 @@ public class MainScreen extends AppCompatActivity {
             }
         }); */
         //check database
+        Database cardDatabase = new Database();
         //display all cards being borrowed
-        //for(Card card : database){
-        // displayCard(card);
-        // }
 
+        //t e s t
+        Card test = new Card("28708c8c-4336-4d04-b43a-59a31471a9f6",4,"CuTs","CuTs",true,"Paper","02/06/18");
+        Card secondTest = new Card("f582e3c3-c329-40bb-9ffb-c4812a7aedd5", 4, "CuTs", "CuTs", true, "Paper", "2/07/18");
+        cardDatabase.addCard(test);
+        cardDatabase.addCard(secondTest);
+        //t e s t
 
         //display all cards? maybe display individual users
             //make each thing clickable to display a card info page OR display a list of cards that user owns
-        Card test = new Card("28708c8c-4336-4d04-b43a-59a31471a9f6",4,"CuTs","CuTs",true,"Paper","02/06/18");
-        //Card secondTest = new Card("f582e3c3-c329-40bb-9ffb-c4812a7aedd5", 4, "CuTs", "CuTs", true, "Paper", "2/07/18");
-        ConstraintLayout mainScreenLayout = (ConstraintLayout) findViewById(R.id.mainscreen);
-        mainScreenLayout.addView(displayCard(test));
-        //mainScreenLayout.addView(displayCard(secondTest));
-
+        displayCardSet(cardDatabase.getCards()); //currently displaying all cards
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { //add options here later
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_screen, menu);
         return true;
@@ -101,9 +102,15 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    private void displayCardSet(){
+    private void displayCardSet(ArrayList<Card> cardSet){
         //pass in a set of cards?
         //do displayCard on each of them
+        LinearLayout mainScreenLayout = (LinearLayout) findViewById(R.id.mainscreen);
+        int id = 1; //can't start from 0 for wahtever reason for ids
+        for(Card temp : cardSet){
+            RelativeLayout tempLayout = displayCard(temp);
+            mainScreenLayout.addView(tempLayout);
+        }
     }
 
 
