@@ -108,9 +108,7 @@ public class Card implements Comparable, Serializable {
     }
 
 
-    public cuts.forohfor.scryfall.api.Card getCardByQuery(){
-        return null; //to implement
-    }
+
 
     public cuts.forohfor.scryfall.api.Card getCardByUUID(){
         CardTask getCard = new CardTask();

@@ -10,78 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="cuts.cardtrackerandroid.MainScreen"
     tools:showIn="@layout/activity_main_screen">
-    <!--
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/cardImage"
-        android:layout_width="@dimen/imageWidth"
-        android:layout_height="@dimen/imageHeight"
-        android:src="@mipmap/ic_launcher"
-        />
-    <TextView
-        android:id="@+id/cardName"
-        android:textSize="@dimen/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/cardImage"
-        android:text="Chandra, Torch of Defiance"
-        />
-    <TextView
-        android:id="@+id/ownerName"
-        android:textSize="@dimen/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/cardImage"
-        android:layout_below="@+id/cardName"
-        android:text="Andrew Giddings"
-        />
-    <TextView
-        android:id="@+id/numCopies"
-        android:textSize="@dimen/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/cardName"
-        android:layout_marginLeft="@dimen/leftMargin"
-        android:text="x4"
-        />
-    <TextView
-        android:id="@+id/clientName"
-        android:textSize="@dimen/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/ownerName"
-        android:layout_below="@+id/numCopies"
-        android:layout_marginLeft="@dimen/leftMargin"
-        android:text="Modo"
-        />
-    <TextView
-        android:id="@+id/foil"
-        android:textSize="@dimen/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/numCopies"
-        android:layout_marginLeft="@dimen/leftMargin"
-        android:text="Nonfoil"
-        />
-    <TextView
-        android:id="@+id/date"
-        android:textSize="@dimen/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/clientName"
-        android:layout_below="@+id/foil"
-        android:layout_marginLeft="@dimen/leftMargin"
-        android:text="12/12/2012"
-        />
 
-
-
-
-
-</RelativeLayout>
--->
 
 
 </LinearLayout>

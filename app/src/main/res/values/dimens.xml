@@ -6,4 +6,5 @@
     <dimen name="leftMargin">10sp</dimen>
     <dimen name="addText_TextSize">30sp</dimen>
     <dimen name="addText_boxHeight">40sp</dimen>
+    <dimen name="searchCard_boxWidth">100sp</dimen>
 </resources>

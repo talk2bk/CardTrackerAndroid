@@ -11,14 +11,23 @@
     tools:context="cuts.cardtrackerandroid.addCardActivity">
 
     <TextView
-    android:text="Card Name: "
-    android:textSize="@dimen/addText_TextSize"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+        android:text="Card Name: "
+        android:textSize="@dimen/addText_TextSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/cardLookupButton"
+        android:onClick="cardLookup"
+        android:text="Choose a Card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight" />
+
+    <!--
     <EditText
         android:id="@+id/cardNameToAdd"
         android:layout_width="match_parent"
         android:layout_height="@dimen/addText_boxHeight" />
+    -->
     <TextView
         android:text="Number of Copies: "
         android:textSize="@dimen/addText_TextSize"
@@ -26,10 +35,12 @@
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/numCopiesToAdd"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="@dimen/addText_boxHeight" />
     <TextView
         android:text="Original Owner: "
+        android:inputType="text"
         android:textSize="@dimen/addText_TextSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -39,6 +50,7 @@
         android:layout_height="@dimen/addText_boxHeight" />
     <TextView
         android:text="Current Owner: "
+        android:inputType="text"
         android:textSize="@dimen/addText_TextSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -76,7 +88,7 @@
     <Button
         android:id="@+id/addCardButton"
         android:onClick ="addCardToDatabase"
-        android:text="Add Card"
+        android:text="Add Card to Collection"
         android:layout_width="match_parent"
         android:layout_height="@dimen/addText_boxHeight" />
 

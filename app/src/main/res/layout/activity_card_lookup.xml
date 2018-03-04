@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cuts.cardtrackerandroid.cardLookupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/addText_boxHeight">
+
+        <EditText
+            android:id="@+id/cardNameToSearch"
+            android:text="Card Name..."
+            android:textColor="#C0C0C0"
+            android:layout_weight=".75"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/addText_boxHeight" />
+        <Button
+            android:id="@+id/cardSearch"
+            android:onClick="cardSearch"
+            android:text="Search"
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/addText_boxHeight" />
+        <!-- card search box -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardSearchResults"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="Results: "
+            android:textSize="@dimen/addText_TextSize"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/addText_boxHeight"/>
+        <!--Card search results to be added in here.-->
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
+
+
+<!--
+
+
+-->
