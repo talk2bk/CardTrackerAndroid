@@ -37,11 +37,6 @@ import java.util.logging.Logger;
 
 
 public class MainScreen extends AppCompatActivity {
-    private final int WRAP_CONTENT = RelativeLayout.LayoutParams.WRAP_CONTENT;
-    private final int UPPERCARDTEXTSIZE = 35;
-    private final int LOWERCARDTEXTSIZE = 30;
-    private final int LEFTMARGIN = 10;
-    private final int MAXROWSIZE = 300;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +66,7 @@ public class MainScreen extends AppCompatActivity {
 
         //display all cards? maybe display individual users
             //make each thing clickable to display a card info page OR display a list of cards that user owns
-        displayCardSet(cardDatabase.getCards()); //currently displaying all cards
+        cardDisplayer.displayCardSet(cardDatabase.getCards(),findViewById(R.id.mainscreen), this); //currently displaying all cards
     }
 
     @Override
@@ -102,136 +97,6 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    private void displayCardSet(ArrayList<Card> cardSet){
-        //pass in a set of cards?
-        //do displayCard on each of them
-        LinearLayout mainScreenLayout = (LinearLayout) findViewById(R.id.mainscreen);
-        int id = 1; //can't start from 0 for wahtever reason for ids
-        for(Card temp : cardSet){
-            RelativeLayout tempLayout = displayCard(temp);
-            mainScreenLayout.addView(tempLayout);
-        }
-    }
-
-
-    private RelativeLayout displayCard(Card cardToDisplay){//maybe put card info in params?
-        RelativeLayout card = new RelativeLayout(this);
-        cuts.forohfor.scryfall.api.Card cardInfo= cardToDisplay.getCardByUUID();
-        int cardImageView = 1; int cardNameView = 2; int ownerNameView = 3; int clientNameView = 4; int dateView = 5; int numCopiesView = 6; int foilView = 7;
-        //Imageview
-        ImageView cardImage = new ImageView(this);
-        RelativeLayout.LayoutParams cardImageParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        cardImageParams.addRule(RelativeLayout.ALIGN_LEFT);
-        cardImage.setLayoutParams(cardImageParams);
-        cardImage.setAdjustViewBounds(true);
-        cardImage.setScaleType(ImageView.ScaleType.FIT_START);
-        cardImage.setId(cardImageView);
-        cardImage.setImageBitmap(getCardImage(cardInfo.getImageURI("small")));
-        card.addView(cardImage);
-        //endImageview
-
-        //cardName
-        TextView cardName = new TextView(this);
-        cardName.setId(cardNameView);
-        RelativeLayout.LayoutParams cardNameParams = new RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        cardNameParams.addRule(RelativeLayout.RIGHT_OF,cardImage.getId());
-        cardName.setLayoutParams(cardNameParams);
-        cardName.setText(cardInfo.getName()); //use param to set text here
-        cardName.setTextSize(TypedValue.COMPLEX_UNIT_SP, UPPERCARDTEXTSIZE);
-        card.addView(cardName);
-        //endCardName
-
-        //ownerName
-        TextView ownerName = new TextView(this);
-        ownerName.setId(ownerNameView);
-        RelativeLayout.LayoutParams ownerNameParams = new RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        ownerNameParams.addRule(RelativeLayout.RIGHT_OF,cardImage.getId());
-        ownerNameParams.addRule(RelativeLayout.BELOW, cardName.getId());
-        ownerName.setLayoutParams(ownerNameParams);
-        ownerName.setText(cardToDisplay.getOriginalOwner()); //use param to set text here
-        ownerName.setTextSize(TypedValue.COMPLEX_UNIT_SP, LOWERCARDTEXTSIZE);
-        card.addView(ownerName);
-        //endOwnerName
-
-        //numCopies
-        TextView numCopies = new TextView(this);
-        numCopies.setId(numCopiesView);
-        RelativeLayout.LayoutParams numCopiesParams = new RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        numCopiesParams.addRule(RelativeLayout.RIGHT_OF,cardName.getId());
-        numCopiesParams.setMargins(LEFTMARGIN,0,0,0);
-        numCopies.setLayoutParams(numCopiesParams);
-        numCopies.setText("x"+cardToDisplay.getNumCopies()); //use param to set text here
-        numCopies.setTextSize(TypedValue.COMPLEX_UNIT_SP, UPPERCARDTEXTSIZE);
-        card.addView(numCopies);
-        //endNumCopies
-
-        //clientName
-        TextView clientName = new TextView(this);
-        clientName.setId(clientNameView);
-        RelativeLayout.LayoutParams clientNameParams = new RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        clientNameParams.addRule(RelativeLayout.RIGHT_OF,ownerName.getId());
-        clientNameParams.addRule(RelativeLayout.BELOW, numCopies.getId());
-        clientNameParams.setMargins(LEFTMARGIN,0,0,0);
-        clientName.setLayoutParams(clientNameParams);
-        clientName.setText(cardToDisplay.getClient()); //use param to set text here
-        clientName.setTextSize(TypedValue.COMPLEX_UNIT_SP, LOWERCARDTEXTSIZE);
-        card.addView(clientName);
-        //endClientName
-
-        //foil
-        TextView foil = new TextView(this);
-        foil.setId(foilView);
-        RelativeLayout.LayoutParams foilParams = new RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        foilParams.addRule(RelativeLayout.RIGHT_OF,numCopies.getId());
-        foilParams.setMargins(LEFTMARGIN,0,0,0);
-        foil.setLayoutParams(foilParams);
-        if(cardToDisplay.getFoil()) {foil.setText("Foil");} else{foil.setText("Nonfoil");} //use param to set text here
-        foil.setTextSize(TypedValue.COMPLEX_UNIT_SP, UPPERCARDTEXTSIZE);
-        card.addView(foil);
-        //endfoil
-
-        //date
-        TextView date = new TextView(this);
-        date.setId(dateView);
-        RelativeLayout.LayoutParams dateParams = new RelativeLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-        dateParams.addRule(RelativeLayout.RIGHT_OF,clientName.getId());
-        dateParams.addRule(RelativeLayout.BELOW, foil.getId());
-        dateParams.setMargins(LEFTMARGIN,0,0,0);
-        date.setLayoutParams(dateParams);
-        date.setText(cardToDisplay.getDate()); //use param to set text here
-        date.setTextSize(TypedValue.COMPLEX_UNIT_SP, LOWERCARDTEXTSIZE);
-        card.addView(date);
-        //enddate
-
-
-        return card;
-    }
-    public Bitmap getCardImage(String cardURI){
-        CardImageTask getCardImage = new CardImageTask();
-        getCardImage.execute(cardURI);
-        try{
-            return getCardImage.get();
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private class CardImageTask extends AsyncTask<String, Void, Bitmap> {
-        @Override
-        protected Bitmap doInBackground(final String... params) {
-            String uri = params[0];
-            try {
-                URL url = new URL(uri);
-                return BitmapFactory.decodeStream(url.openConnection().getInputStream());
-            } catch (IOException ex) {
-                return null;
-            }
-
-        }
-    }
 
 
 }
