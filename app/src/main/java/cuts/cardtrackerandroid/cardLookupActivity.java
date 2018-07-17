@@ -25,8 +25,10 @@ public class cardLookupActivity extends AppCompatActivity {
     public void cardSearch(View view){
         ArrayList<cuts.forohfor.scryfall.api.Card> searchResults = getCardByQuery(((EditText)findViewById(R.id.cardNameToSearch)).getText().toString());
         if(searchResults != null){
+            ArrayList<Card> cardedResults = new ArrayList<Card>();
             for(cuts.forohfor.scryfall.api.Card card : searchResults){
                 //display card on screen to choose from
+
             }
         }
         else{
